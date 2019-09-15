@@ -1,6 +1,5 @@
 {
   "name": "nutri-ionic",
   "integrations": {},
-  "type": "angular",
-  "id": "d3e8dd78"
+  "type": "ionic-angular"
 }
