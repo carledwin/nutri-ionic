@@ -1,6 +1,11 @@
 import { DicasPage } from './../dicas/dicas';
 import { Component, ViewChild } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
+import { RegisterPage } from '../register/register';
+
+import {AngularFireAuth} from 'angularfire2/auth';
+import { User} from './user';
+
 
 @Component({
   selector: 'page-home',
@@ -8,33 +13,56 @@ import { NavController, ToastController } from 'ionic-angular';
 })
 export class HomePage {
 
+  user: User = new User();
+
   @ViewChild('usuario') usuario;
   @ViewChild('senha') senha;
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, 
+              public toastCtrl: ToastController,
+              public fire: AngularFireAuth) {
+  }
+
+  entrar(){
+    
+    let toast = this.toastCtrl.create({duration:3000, position: 'bottom'});
+    
+    this.fire.auth.signInWithEmailAndPassword(this.usuario.value, this.senha.value)
+    .then(data => {
+
+      console.log('Data do login: ' + data);
+
+      this.user.email = this.usuario.value;
+      this.user.password = this.senha.value;
+      
+      toast.setMessage('Login efetuado com sucesso');
+      toast.present();
+
+      this.navCtrl.push(DicasPage);
+    })
+    .catch((error: any) => {
+
+      if(error.code == 'auth/invalid-email'){
+
+        toast.setMessage('Thrown if the email address is not valid.');
+      }else if(error.code == 'auth/user-disabled'){
+
+        toast.setMessage('Thrown if the user corresponding to the given email has been disabled.');
+      }else if(error.code == 'auth/user-not-found'){
+
+        toast.setMessage('Thrown if there is no user corresponding to the given email.');
+      }else if(error.code == 'auth/wrong-password'){
+
+        toast.setMessage('Thrown if the password is invalid for the given email, or the account corresponding to the email does not have a password set.');
+      }
+
+      toast.present();
+    });
 
   }
 
-
-  entrar(){
-      
-    console.log('usuario > ', this.usuario.value)
-    console.log('senha > ' + this.senha.value)
-
-    let toast = this.toastCtrl.create({duration:3000, position: 'bottom'});
-
-    if("carledwin" != this.usuario.value && "senha1234" != this.usuario.value){
-
-      toast.setMessage('Usuário ou senha não encontrado');
-      toast.present();
-    }else{
-
-      this.navCtrl.push(DicasPage);
-
-      toast.setMessage('Logado com sucesso');
-      toast.present();
-    }
-
+  cadastrar(){
+    this.navCtrl.push(RegisterPage);   
   }
 
 }
