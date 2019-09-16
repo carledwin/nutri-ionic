@@ -25695,3 +25695,73 @@ ion-navbar.toolbar {
   padding-bottom: 4px;
   min-height: 46px;
 }
+
+page-home .logo {
+  width: auto;
+  margin: auto;
+  display: block;
+  max-width: 30%;
+  padding-top: 20px;
+}
+
+page-home .esqueciMinhaSenha {
+  background: none;
+  text-align: center;
+}
+
+page-home .esqueciMinhaSenha a {
+  color: red;
+}
+
+page-home .cadastrar {
+  background: none;
+  text-align: center;
+}
+
+page-home .cadastrar a {
+  color: green;
+}
+
+page-home .logar {
+  border-radius: 30px !important;
+}
+
+page-home ion-item {
+  border-radius: 30px !important;
+  padding-left: 10px !important;
+  margin-bottom: 10px !important;
+  color: #488aff !important;
+  background-color: azure !important;
+  opacity: 1;
+  font-size: 0.9em;
+}
+
+page-recuperar .recuperar {
+  border-radius: 30px !important;
+  background-color: blue;
+}
+
+page-recuperar ion-item {
+  border-radius: 30px !important;
+  padding-left: 10px !important;
+  margin-bottom: 10px !important;
+  color: #488aff !important;
+  background-color: azure !important;
+  opacity: 1;
+  font-size: 0.9em;
+}
+
+page-register .cadastrar {
+  border-radius: 30px !important;
+  background-color: limegreen;
+}
+
+page-register ion-item {
+  border-radius: 30px !important;
+  padding-left: 10px !important;
+  margin-bottom: 10px !important;
+  color: #488aff !important;
+  background-color: azure !important;
+  opacity: 1;
+  font-size: 0.9em;
+}

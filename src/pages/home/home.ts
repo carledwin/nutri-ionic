@@ -1,10 +1,12 @@
-import { DicasPage } from './../dicas/dicas';
 import { Component, ViewChild } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
-import { RegisterPage } from '../register/register';
 
 import {AngularFireAuth} from 'angularfire2/auth';
 import { User} from './user';
+
+import { DicasPage } from './../dicas/dicas';
+import { RegisterPage } from '../register/register';
+import { RecuperarPage } from '../recuperar/recuperar';
 
 
 @Component({
@@ -15,7 +17,7 @@ export class HomePage {
 
   user: User = new User();
 
-  @ViewChild('usuario') usuario;
+  @ViewChild('email') email;
   @ViewChild('senha') senha;
 
   constructor(public navCtrl: NavController, 
@@ -27,12 +29,12 @@ export class HomePage {
     
     let toast = this.toastCtrl.create({duration:3000, position: 'bottom'});
     
-    this.fire.auth.signInWithEmailAndPassword(this.usuario.value, this.senha.value)
+    this.fire.auth.signInWithEmailAndPassword(this.email.value, this.senha.value)
     .then(data => {
 
       console.log('Data do login: ' + data);
 
-      this.user.email = this.usuario.value;
+      this.user.email = this.email.value;
       this.user.password = this.senha.value;
       
       toast.setMessage('Login efetuado com sucesso');
@@ -63,6 +65,10 @@ export class HomePage {
 
   cadastrar(){
     this.navCtrl.push(RegisterPage);   
+  }
+
+  esqueciMinhaSenha(){
+    this.navCtrl.push(RecuperarPage);
   }
 
 }

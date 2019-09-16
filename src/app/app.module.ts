@@ -8,18 +8,19 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DicasPage } from './../pages/dicas/dicas';
 import { RegisterPage } from '../pages/register/register';
+import { RecuperarPage } from '../pages/recuperar/recuperar';
 
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth'
 
 const firebaseAuth = {
-    apiKey: "AIzaSyB6THfDFgALBlZ4AvjklçTCcHnFU0JBR6LA9Vk",
-    authDomain: "nutriyuy-ioyynic.firebaseapp.com",
-    databaseURL: "https://nutryytti-ionic.firebaseio.com",
-    projectId: "nutriyuy-ioyynic",
-    storageBucket: "nutriyuy-ioyynic.appspot.com",
-    messagingSenderId: "6503365616554408",
-    appId: "1:650336561408:web:46aef087673c7c6ff2c6496be5"
+    apiKey: "AIzaSyB6THfDFgALBlZ4AvTCcHnFU0JBR6LA9Vk",
+    authDomain: "nutri-ionic.firebaseapp.com",
+    databaseURL: "https://nutri-ionic.firebaseio.com",
+    projectId: "nutri-ionic",
+    storageBucket: "nutri-ionic.appspot.com",
+    messagingSenderId: "650336561408",
+    appId: "1:650336561408:web:46aef03c7c6ff2c6496be5"
   };
 
 @NgModule({
@@ -27,7 +28,8 @@ const firebaseAuth = {
     MyApp,
     HomePage,
     DicasPage,
-    RegisterPage
+    RegisterPage,
+    RecuperarPage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ const firebaseAuth = {
     MyApp,
     HomePage,
     DicasPage,
-    RegisterPage
+    RegisterPage,
+    RecuperarPage
   ],
   providers: [
     StatusBar,

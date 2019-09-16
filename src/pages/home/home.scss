@@ -1,3 +1,40 @@
 page-home {
 
+    .logo{
+        width: auto;
+        margin: auto;
+        display: block;
+        max-width: 30%;
+        padding-top: 20px;    
+    }
+
+    .esqueciMinhaSenha{
+        background: none;
+        text-align: center;
+        a{
+            color: red;
+        }
+    }
+
+    .cadastrar{
+        background: none;
+        text-align: center;
+        a{
+            color: green;
+        }
+    }
+
+    .logar{
+        border-radius: 30px !important;
+    }
+
+    ion-item{
+        border-radius: 30px !important;
+        padding-left: 10px !important;
+        margin-bottom: 10px !important;
+        color: #488aff !important;
+        background-color: azure !important;
+        opacity: 1;
+        font-size: 0.9em;
+    }
 }
