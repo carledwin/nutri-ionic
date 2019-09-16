@@ -8,6 +8,7 @@ import { DicasPage } from './../dicas/dicas';
 import { RegisterPage } from '../register/register';
 import { RecuperarPage } from '../recuperar/recuperar';
 
+import firebase from 'firebase';
 
 @Component({
   selector: 'page-home',
@@ -69,6 +70,24 @@ export class HomePage {
 
   esqueciMinhaSenha(){
     this.navCtrl.push(RecuperarPage);
+  }
+
+  entrarComFacebook(){
+    
+    let toast = this.toastCtrl.create({duration:3000, position: 'bottom'});
+        
+    this.fire.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+    
+    .then(res => {
+
+      console.log("RES >> ", res);
+
+      toast.setMessage('Login efetuado com sucesso');
+      toast.present();
+      
+      this.navCtrl.push(DicasPage);
+    })
+    .catch((error: any) => {});
   }
 
 }
