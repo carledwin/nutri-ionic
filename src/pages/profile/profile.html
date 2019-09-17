@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Meu Perfil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-item>
+        <ion-thumbnail item-start *ngIf="fotoPerfil">
+          <img src="{{ facebook.fotoUrl }}">
+        </ion-thumbnail>
+        
+        <ion-thumbnail item-start *ngIf="!fotoPerfil">
+          <img src="assets/imgs/foto-perfil.jpg">
+        </ion-thumbnail>
+        
+          <h2 *ngIf="fotoPerfil">{{ facebook.nome }}</h2>
+          <h2 *ngIf="!fotoPerfil">Nutri Brasil</h2>
+    
+        <p>{{ email }}</p>
+      </ion-item>
+          
+</ion-content>

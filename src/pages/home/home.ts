@@ -74,20 +74,48 @@ export class HomePage {
 
   entrarComFacebook(){
     
+    console.log('iniciando login com facebook');
+
     let toast = this.toastCtrl.create({duration:3000, position: 'bottom'});
         
     this.fire.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
-    
     .then(res => {
-
-      console.log("RES >> ", res);
-
-      toast.setMessage('Login efetuado com sucesso');
-      toast.present();
       
+      console.log("RES >> ", res);
+      console.log('Login no facebook efetuado com sucesso');
       this.navCtrl.push(DicasPage);
     })
-    .catch((error: any) => {});
+    .catch((error: any) => {
+      
+      let message = 'erro ao tentar fazer o login no facebook' + error.code;
+      
+      console.log(message);
+      toast.setMessage(message);
+      toast.present();
+    });
   }
 
+  logarVisitante(){
+    
+    console.log('iniciando login como anonimo');
+
+    let toast = this.toastCtrl.create({duration:3000, position: 'bottom'});
+        
+    this.fire.auth.signInAnonymously()
+    .then(res => {
+      
+      console.log("RES >> ", res);
+      console.log('Login anonimo com sucesso');
+      this.navCtrl.push(DicasPage);
+    })
+    .catch((error: any) => {
+      
+      if(error.code == 'auth/operation-not-allowed'){
+
+        toast.setMessage('Thrown if anonymous accounts are not enabled. Enable anonymous accounts in the Firebase Console, under the Auth tab.');
+        toast.present();
+      }
+
+    });
+  }
 }

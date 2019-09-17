@@ -9,9 +9,15 @@ import { HomePage } from '../pages/home/home';
 import { DicasPage } from './../pages/dicas/dicas';
 import { RegisterPage } from '../pages/register/register';
 import { RecuperarPage } from '../pages/recuperar/recuperar';
+import { ProfilePage } from '../pages/profile/profile';
+import { PostPage } from './../pages/post/post';
 
 import {AngularFireModule} from 'angularfire2';
-import {AngularFireAuthModule} from 'angularfire2/auth'
+import {AngularFireAuthModule} from 'angularfire2/auth';
+
+import { WordPressService} from '../services/wordpress.service';
+
+import { HttpModule } from '@angular/http';
 
 const firebaseAuth = {
     apiKey: "AIzaSyB6THfDFgALBlZ4AvTCcHnFU0JBR6LA9Vk",
@@ -29,12 +35,15 @@ const firebaseAuth = {
     HomePage,
     DicasPage,
     RegisterPage,
-    RecuperarPage
+    RecuperarPage,
+    ProfilePage,
+    PostPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireAuthModule,
+    HttpModule,
     AngularFireModule.initializeApp(firebaseAuth)
   ],
   bootstrap: [IonicApp],
@@ -43,11 +52,14 @@ const firebaseAuth = {
     HomePage,
     DicasPage,
     RegisterPage,
-    RecuperarPage
+    RecuperarPage,
+    ProfilePage,
+    PostPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    WordPressService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
