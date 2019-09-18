@@ -1,10 +1,10 @@
+import { TabsPage } from './../tabs/tabs';
 import { Component, ViewChild } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 
 import {AngularFireAuth} from 'angularfire2/auth';
 import { User} from './user';
 
-import { DicasPage } from './../dicas/dicas';
 import { RegisterPage } from '../register/register';
 import { RecuperarPage } from '../recuperar/recuperar';
 
@@ -17,6 +17,7 @@ import firebase from 'firebase';
 export class HomePage {
 
   user: User = new User();
+  tabBarElement: any;
 
   @ViewChild('email') email;
   @ViewChild('senha') senha;
@@ -24,6 +25,35 @@ export class HomePage {
   constructor(public navCtrl: NavController, 
               public toastCtrl: ToastController,
               public fire: AngularFireAuth) {
+  
+    this.tabBarElement = document.querySelector('.show-tabbar');
+  }
+
+  ngAfterViewInit() {
+    
+    let tabs = document.querySelectorAll('.show-tabbar');
+
+    if(tabs !== null){
+
+      Object.keys(tabs).map((key) => {
+               
+              tabs[key].style.display = 'none';
+            });
+    }
+  }
+
+  ionViewWillLeave(){
+   
+    let tabs = document.querySelectorAll('.show-tabbar');
+
+    if(tabs !== null){
+
+      Object.keys(tabs)
+            .map((key) => {
+              
+              tabs[key].style.display = 'none';
+            });
+    }
   }
 
   entrar(){
@@ -41,7 +71,7 @@ export class HomePage {
       toast.setMessage('Login efetuado com sucesso');
       toast.present();
 
-      this.navCtrl.push(DicasPage);
+      this.navCtrl.push(TabsPage);
     })
     .catch((error: any) => {
 
@@ -76,14 +106,14 @@ export class HomePage {
     
     console.log('iniciando login com facebook');
 
-    let toast = this.toastCtrl.create({duration:3000, position: 'bottom'});
+    let toast = this.toastCtrl.create({duration:10000, position: 'bottom'});
         
     this.fire.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
     .then(res => {
       
       console.log("RES >> ", res);
       console.log('Login no facebook efetuado com sucesso');
-      this.navCtrl.push(DicasPage);
+      this.navCtrl.push(TabsPage);
     })
     .catch((error: any) => {
       
@@ -106,7 +136,7 @@ export class HomePage {
       
       console.log("RES >> ", res);
       console.log('Login anonimo com sucesso');
-      this.navCtrl.push(DicasPage);
+      this.navCtrl.push(TabsPage);
     })
     .catch((error: any) => {
       

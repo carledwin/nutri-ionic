@@ -1,5 +1,5 @@
 import { HomePage } from './../pages/home/home';
-import { DicasPage } from './../pages/dicas/dicas';
+import { TabsPage } from './../pages/tabs/tabs';
 import { AngularFireAuth} from 'angularfire2/auth';
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
@@ -22,7 +22,7 @@ export class MyApp {
 
       if(user){
        
-        this.rootPage = DicasPage;
+        this.rootPage = TabsPage;
         authObserver.unsubscribe();
       }else{
 

@@ -1,5 +1,7 @@
 {
   "name": "nutri-ionic",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

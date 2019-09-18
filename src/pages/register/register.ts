@@ -1,4 +1,4 @@
-import { DicasPage } from './../dicas/dicas';
+import { TabsPage } from './../tabs/tabs';
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
@@ -11,6 +11,8 @@ import {AngularFireAuth} from 'angularfire2/auth';
 })
 export class RegisterPage {
 
+  tabBarElement: any;
+
   @ViewChild('email') email;
   @ViewChild('senha') senha;
 
@@ -18,10 +20,40 @@ export class RegisterPage {
               public navParams: NavParams, 
               public fire: AngularFireAuth,
               public toastCtrl: ToastController) {
+
+    this.tabBarElement = document.querySelector('show-tabbar');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
+  }
+
+  ngAfterViewEnter() {
+    
+    let tabs = document.querySelectorAll('.show-tabbar');
+
+    if(tabs !== null){
+
+      Object.keys(tabs)
+            .map((key) => {
+              
+              tabs[key].style.display = 'none';
+            });
+    }
+  }
+
+  ionViewWillLeave(){
+   
+    let tabs = document.querySelectorAll('.show-tabbar');
+
+    if(tabs !== null){
+
+      Object.keys(tabs)
+            .map((key) => {
+              
+              tabs[key].style.display = 'none';
+            });
+    }
   }
 
   registrar(){
@@ -36,7 +68,7 @@ export class RegisterPage {
       toast.setMessage('Usuário criado com sucesso');
       toast.present();
 
-      this.navCtrl.push(DicasPage);
+      this.navCtrl.push(TabsPage);
 
     })
     .catch((error: any) => {
