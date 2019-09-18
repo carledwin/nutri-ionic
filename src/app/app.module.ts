@@ -10,7 +10,7 @@ import { DicasPage } from './../pages/dicas/dicas';
 import { RegisterPage } from '../pages/register/register';
 import { RecuperarPage } from '../pages/recuperar/recuperar';
 import { ProfilePage } from '../pages/profile/profile';
-import { PostPage } from './../pages/post/post';
+import { PostPage } from '../pages/post/post';
 
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';

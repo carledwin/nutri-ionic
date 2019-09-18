@@ -38,7 +38,7 @@ export class WordPressService{
     getCategories(category){
 
         return this.http
-                    .get(Config.WORDPRESS_REST_API_URL + 'categories/' + category)
+                    .get(Config.WORDPRESS_REST_API_URL + 'categories/') //Config.WORDPRESS_REST_API_URL + 'categories/' + category)
                     .map(resp => resp.json());
     }
 

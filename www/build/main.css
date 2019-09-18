@@ -25736,6 +25736,43 @@ page-home ion-item {
   font-size: 0.9em;
 }
 
+page-post .imgTopo {
+  width: 100%;
+}
+
+page-post .post-title {
+  display: block;
+  font-size: 1.8rem;
+  line-height: 1.2;
+  color: #222;
+  margin: 2px 0;
+  padding: 7px 0;
+}
+
+page-post .post-content {
+  margin: 0 0 2px;
+  font-size: 1.4rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+page-post .bold-title {
+  font-size: inherit;
+  font-weight: bold;
+  color: #000;
+}
+
+page-post .category-col {
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  width: auto;
+  -webkit-flex-basis: auto;
+  -ms-flex-preferred-size: auto;
+  flex-basis: auto;
+}
+
 page-recuperar .recuperar {
   border-radius: 30px !important;
   background-color: blue;
