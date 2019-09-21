@@ -21,13 +21,13 @@ import { WordPressService} from '../services/wordpress.service';
 import { HttpModule } from '@angular/http';
 
 const firebaseAuth = {
-    apiKey: "AIzaSyB6THfDFgALBlZ4AvTCcHnFU0JBR6LA9Vk",
-    authDomain: "nutri-ionic.firebaseapp.com",
-    databaseURL: "https://nutri-ionic.firebaseio.com",
-    projectId: "nutri-ionic",
-    storageBucket: "nutri-ionic.appspot.com",
-    messagingSenderId: "650336561408",
-    appId: "1:650336561408:web:46aef03c7c6ff2c6496be5"
+    apiKey: "...",
+    authDomain: "...",
+    databaseURL: "...",
+    projectId: "...",
+    storageBucket: "...",
+    messagingSenderId: "...",
+    appId: "..."
   };
 
 @NgModule({
